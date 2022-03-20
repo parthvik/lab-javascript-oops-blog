@@ -1,39 +1,42 @@
 /* Fill your code*/
-document.getElementById('addBlog').addEventListener('click', function () {
-    document.getElementById('popupContact').style.display = "block";
-})
 class Blog {
     constructor(title, detail) {
-        this.title = title;
-        this.detail = detail;
+    this.title = title
+    this.detail = detail
     }
     addTitle() {
-        var title_card = document.createElement('h1');
-        title_card.setAttribute("id", "blog-title");
-        console.log(title_card);
-        document.getElementById('card-text').appendChild(title_card);
-        title_card.innerHTML += this.title;
-
+    const titleCard = document.createElement("h1")
+    titleCard.setAttribute("id", "blog-title")
+    console.log(titleCard)
+    document.getElementById("card-text").appendChild(titleCard)
+    titleCard.innerHTML += this.title
     }
     addDescription() {
-        var discription_card = document.createElement('p');
-        discription_card.setAttribute("id", "blog-description");
-        console.log(discription_card);
-        document.getElementById('card-text').appendChild(discription_card);
-        discription_card.innerHTML += this.detail;
+    const descCard = document.createElement("p")
+    descCard.setAttribute("id", "blog-description")
+    console.log(descCard)
+    document.getElementById("card-text").appendChild(descCard)
+    descCard.innerHTML += this.detail
     }
 }
-
-var post = document.getElementById('post');
-post.addEventListener('click', function () {
-    var title = document.getElementById('title').value;
-    var detail = document.getElementById('detail').value;
-    var add_blog = new Blog(title, detail);
-    add_blog.addTitle();
-    add_blog.addDescription();
-    var image = document.createElement('img');
-    image.src = './assets/javascript.png';
-    var newchild = document.getElementById('flashcard')
-    newchild.insertBefore(image, newchild.childNodes[0]);
-    document.getElementById('popupContact').style.display = "none";
+document.getElementById("close").addEventListener("click", () => {
+    document.getElementById("popupContact").style.display = "none"
+    document.getElementById("title").value = ""
+    document.getElementById("detail").value = ""
+})
+document.getElementById("addBlog").addEventListener("click", () => {
+    document.getElementById("popupContact").style.display = "block"
+    document.getElementById("title").value = ""
+    document.getElementById("detail").value = ""
+})
+document.getElementById("post").addEventListener("click", () => {
+    document.getElementById("popupContact").style.display = "none"
+    const title = document.getElementById("title").value
+    const description = document.getElementById("detail").value
+    const image = document.createElement("img")
+    image.src = "./assets/javascript.png"
+    document.getElementById("card-text").append(image)
+    const nblog = new Blog(title, description)
+    nblog.addTitle()
+    nblog.addDescription()
 })
